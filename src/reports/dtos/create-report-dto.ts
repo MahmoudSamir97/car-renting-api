@@ -1,0 +1,40 @@
+import {
+  IsLatitude,
+  IsLongitude,
+  IsNumber,
+  IsString,
+  Max,
+  Min,
+} from 'class-validator';
+
+export class CreateReportDTO {
+  @IsString()
+  make!: string;
+
+  @IsString()
+  model!: string;
+
+  @IsString()
+  title!: string;
+
+  @IsNumber()
+  @Min(1930)
+  @Max(2025)
+  year!: number;
+
+  @IsNumber()
+  @Min(0)
+  @Max(100000)
+  mileage!: number;
+
+  @IsLongitude()
+  lng!: number;
+
+  @IsLatitude()
+  lat!: number;
+
+  @IsNumber()
+  @Min(0)
+  @Max(1000000)
+  price!: number;
+}
