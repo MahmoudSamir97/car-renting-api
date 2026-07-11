@@ -1,3 +1,4 @@
+import { Report } from '@/reports/report.entity';
 import { Expose, Transform } from 'class-transformer';
 
 export class ReportDTO {
@@ -18,7 +19,10 @@ export class ReportDTO {
   @Expose()
   model!: string;
 
-  @Transform(({ obj }) => obj.user.id)
+  @Expose()
+  approved!: boolean;
+
+  @Transform(({ obj }) => (obj as Report).id)
   @Expose()
   userId!: number;
 }
